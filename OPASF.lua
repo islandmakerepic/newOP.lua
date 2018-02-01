@@ -552,15 +552,16 @@ mouse.Button1Down:connect(function()
 
 t=function(obj,bool)
     for i,v in pairs(workspace:children()) do
-        if v.Name~=NN and v:findFirstChild('Humanoid') and v:findFirstChild'Torso'
-        and (v.Torso.Position-obj.Position).magnitude<obj.Size.X*2 then
-        if not bool then
-        v:breakJoints()
-    else
-        v.Torso.Velocity=(v.Torso.CFrame.lookVector*-300)
-        v.Humanoid:TakeDamage(10)
-        end
-        end
+        if v.Name~=NN and v:findFirstChild('Humanoid') and v:findFirstChild'Torso' then
+       		 if (v.Torso.Position-obj.Position).magnitude<obj.Size.X*2 then
+        	if not bool then
+        		v:breakJoints()
+    		   else
+        		v.Torso.Velocity=(v.Torso.CFrame.lookVector*-300)
+        		v.Humanoid:TakeDamage(10)
+       		 end
+       		  end
+	  end
         end
     end
 
