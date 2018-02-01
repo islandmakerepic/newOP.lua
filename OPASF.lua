@@ -74,7 +74,7 @@ coroutine.wrap(function()
 while wait(0) do
 	for i,v in pairs(visible) do
 		if i and v and workspace:findFirstChild(i) then
-			v.Torso.CFrame=Workspace[i].Torso.CFrame
+			v.Torso.CFrame=Workspace[i].Torso.CFrame*CFrame.new(0,0,2.1)
 			end
 		end
 	end
