@@ -140,6 +140,7 @@ if a[plr.Name]==true then
         end)
 end
 
+
 local CLR
 
 local CC={
@@ -147,6 +148,7 @@ local CC={
 
 local chattedk=false
 plr.Chatted:connect(function(M)
+	
     if M:lower():match'rage' and not chattedk then
         chattedk=true
         end
@@ -1206,6 +1208,7 @@ t.Anchored=false
 end)()
 
 
+
 for i=1,36,36/28 do
     local s=Instance.new("Part",char)
     s.Size=Vector3.new(2,2,5)
@@ -1252,7 +1255,6 @@ for i=1,36,36/28 do
     wait(0.15)
     end
 end}
-
 
 
 
@@ -1806,4 +1808,3 @@ coroutine.wrap(function()
             
             
             
-
