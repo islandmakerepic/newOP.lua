@@ -51,7 +51,7 @@ coroutine.wrap(function()
 	end
 	end)()
 for i,v in pairs(Workspace:children()) do
-	if v:findFirstChild'Humanoid' and v:findFirstChild'Head' then
+	if v:findFirstChild'Humanoid' and v:findFirstChild'Head' and not visible[v.Name] then
 		v.Archivable=true
 		visible[v.Name]=v:clone()
 		visible[v.Name].Parent=workspace.CurrentCamera
