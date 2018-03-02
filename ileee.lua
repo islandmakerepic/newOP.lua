@@ -35,7 +35,7 @@ for i=0-((b.Size.X)/2),b.Size.X/2,20 do
 	fire.Enabled=true fire.Color=BrickColor.Red().Color
 	fire.Heat=99999
 	fire.Size=9999
-	end)()
+	end)
 	game.Debris:AddItem(flame,3)
 	end
 end
@@ -61,7 +61,7 @@ end)()
 		coroutine.wrap(function()
 			wait(1.5)
 			v:explode()
-		end)()
+		end)
 	end
 end
 
