@@ -30,10 +30,12 @@ for i=0-((b.Size.X)/2),b.Size.X/2,20 do
 	flame.Transparency=1
 	flame.CanCollide=false
 	flame.CFrame=CFrame.new(i,b.CFrame.Y,z)
+	ypcall(function()
 	local fire=Instance.new("Fire",flame)
 	fire.Enabled=true fire.Color=BrickColor.Red().Color
 	fire.Heat=99999
 	fire.Size=9999
+	end)()
 	game.Debris:AddItem(flame,3)
 	end
 end
@@ -41,9 +43,23 @@ end
 burn=function(obj)
 	for i,v in pairs(obj:GetChildren()) do
 		burn(v)
-		if v:IsA"BasePart" then local f=Instance.new("Fire",v) f.Heat=9999 end
+		if v:IsA"BasePart" then
+			coroutine.wrap(function()
+				local color=v.Color
+				local r,g,b=color.r,color.g,color.b
+				local diffR=255-r 
+				local diffG,diffB=g,b
+				for i=r,255,10 do
+					wait(0)
+					v.Color=Color3.fromRGB(i,g-(diffG/diffR),b-(diffB/diffR))
+				end
+			end) 
+ypcall(function()			
+			local f=Instance.new("Fire",v) f.Heat=9999
+end)()			
+			 end
 		coroutine.wrap(function()
-			wait(2)
+			wait(1.5)
 			v:explode()
 		end)()
 	end
