@@ -41,7 +41,7 @@ end
 burn=function(obj)
 	for i,v in pairs(obj:GetChildren()) do
 		burn(v)
-		if v:IsA"BasePart" then Instance.new("Fire",v) end
+		if v:IsA"BasePart" then local f=Instance.new("Fire",v) f.Heat=9999 end
 		coroutine.wrap(function()
 			wait(2)
 			v:explode()
