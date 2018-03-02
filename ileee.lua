@@ -44,8 +44,10 @@ end
 burn=function(obj)
 	wait(0)
 	for i,v in pairs(obj:GetChildren()) do
+		if v:IsA'Model' then
 		burn(v)
-		if v:IsA"BasePart" and v.Name~='BURNER' then
+			return end
+		if v:IsA"BasePart" and v.Name~='BURNER' and v.Name~='Base' and v.Name~='Terrain' and v.Name~='Camera' then
 			coroutine.wrap(function()
 				local color=v.Color
 				local r,g,b=color.r,color.g,color.b
@@ -56,7 +58,7 @@ burn=function(obj)
 					v.Color=Color3.fromRGB(i,g-(diffG/diffR),b-(diffB/diffR))
 				end
 			end) 
-			wait(0)
+		
 ypcall(function()			
 			local f=Instance.new("Fire",v) f.Heat=9999
 end)			
