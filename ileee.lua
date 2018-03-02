@@ -23,8 +23,9 @@ repeat wait(0)
 SUN.Velocity=SUN.CFrame.lookVector*1000
 until SUN.Touched:wait()
 b.Anchored=false
-for i=0-((b.Size.X)/2),b.Size.X/2,20 do
-	for z=0-((b.Size.Z)/2),b.Size.Z/2,20 do
+b.Name='BURNER'
+for i=0-((b.Size.X)/2),b.Size.X/2,150 do
+	for z=0-((b.Size.Z)/2),b.Size.Z/2,150 do
 	local flame=Instance.new("Part",workspace)
 	flame.Size=Vector3.new(10,10,10)
 	flame.Transparency=1
@@ -35,15 +36,16 @@ for i=0-((b.Size.X)/2),b.Size.X/2,20 do
 	fire.Enabled=true fire.Color=BrickColor.Red().Color
 	fire.Heat=99999
 	fire.Size=9999
-	end)
+	end) --line 38
 	game.Debris:AddItem(flame,3)
 	end
 end
 
 burn=function(obj)
+	wait(0)
 	for i,v in pairs(obj:GetChildren()) do
 		burn(v)
-		if v:IsA"BasePart" then
+		if v:IsA"BasePart" and v.Name~='BURNER' then
 			coroutine.wrap(function()
 				local color=v.Color
 				local r,g,b=color.r,color.g,color.b
@@ -54,14 +56,15 @@ burn=function(obj)
 					v.Color=Color3.fromRGB(i,g-(diffG/diffR),b-(diffB/diffR))
 				end
 			end) 
+			wait(0)
 ypcall(function()			
 			local f=Instance.new("Fire",v) f.Heat=9999
-end)()			
+end)			
 			 end
 		coroutine.wrap(function()
 			wait(1.5)
 			v:explode()
-		end)
+		end)()
 	end
 end
 
