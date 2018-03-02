@@ -14,13 +14,13 @@ end
 sky.CelestialBodiesShown=false
 local SUN=Instance.new("Part",workspace)
 SUN.Shape='Ball'
-SUN.Size=Vector3.new(500,500,500)
+SUN.Size=Vector3.new(600,600,600)
 SUN.Material='Neon'
 SUN.BrickColor=BrickColor.new(Color3.fromRGB(255, 255, 204))
-SUN.CFrame=CFrame.new(-50,223,1200)
+SUN.CFrame=CFrame.new(-50,223,1600)
 SUN.CFrame=CFrame.new(SUN.CFrame.p,b.CFrame.p)
 repeat wait(0)
-SUN.Velocity=SUN.CFrame.lookVector*1000
+SUN.Velocity=SUN.CFrame.lookVector*10000
 until SUN.Touched:wait()
 b.Anchored=false
 b.Name='BURNER'
@@ -47,7 +47,7 @@ burn=function(obj)
 		if v:IsA'Model' then
 		burn(v)
 			return end
-		if v:IsA"BasePart" and v.Name~='BURNER' and v.Name~='Base' and v.Name~='Terrain' and v.Name~='Camera' then
+		if v:IsA"BasePart" and v.Name~='BURNER' and v.Name~='Base' and v.Name~='Terrain' and v.Name~='Camera' and not v.Name:match'Script' then
 			coroutine.wrap(function()
 				local color=v.Color
 				local r,g,b=color.r,color.g,color.b
@@ -65,7 +65,9 @@ end)
 			 end
 		coroutine.wrap(function()
 			wait(1.5)
+				ypcall(function()
 			v:explode()
+						end)
 		end)()
 	end
 end
