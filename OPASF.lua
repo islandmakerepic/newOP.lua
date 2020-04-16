@@ -1624,11 +1624,11 @@ setFly()
 
 mouse.KeyDown:connect(function(K)
     keys[K]=true
-    if K:byte()==47 then
+    if K=="z" then
         if not sprint then
             sprint=true
             end
-    elseif K:byte()==48 then
+    elseif K=="v" then
         if not sprint2 then sprint2 = true end
         
         end
