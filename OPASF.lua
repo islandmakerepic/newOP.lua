@@ -1694,9 +1694,9 @@ coroutine.wrap(function()
 
  mouse.KeyUp:connect(function(K)
      keys[K]=false
-                if K:byte()==47 then
+                if K=="z" then
                     sprint=false
-                    elseif K:byte()==48 then
+                    elseif K=="v" then
                     sprint2=false
                     end
             end)
